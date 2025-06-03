@@ -10,8 +10,9 @@ import { ProductsPageRoutingModule } from './products-routing.module';
 import { ProductsPage } from './products.page';
 import { RouterModule } from '@angular/router';
 import { MainPageComponent } from '../main-page/main-page.component';
-import { AddProductPage } from './add-product/add-product.page';
+import { AddProductPage, CustomCurrencyMaskConfig } from './add-product/add-product.page';
 import { HomePage } from './home/home.page';
+import { CURRENCY_MASK_CONFIG } from 'ionicng2-currency-mask/src/currency-mask.config';
 
 @NgModule({
   imports: [
@@ -25,6 +26,9 @@ import { HomePage } from './home/home.page';
     ProductsPage,
     HomePage,
   AddProductPage],
-  exports: [AddProductPage]
+  exports: [AddProductPage],
+  providers:[
+    { provide: CURRENCY_MASK_CONFIG, useValue: CustomCurrencyMaskConfig }
+  ]
 })
 export class ProductsPageModule { }
