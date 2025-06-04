@@ -5,31 +5,28 @@ import { Observable, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService implements OnInit {
+export class ProductService  {
   private apiUrl = 'https://fakestoreapi.com/products';
   static products: any[] = [];
 
   constructor(private http: HttpClient) { }
 
-  ngOnInit(): void {
-    // this.initRepository()
-  }
-
-  getProducts(): Observable<any> {
+  
+  getProducts(): Observable<any> {                // captura os dados da API
     return this.http.get(this.apiUrl);
   }
 
-  addProduct(product: any): Observable<any> {
+  addProduct(product: any): Observable<any> {           // envia dados para a API e atualiza a lista de produtos
     ProductService.products.unshift(product);
     return this.http.post(this.apiUrl, product);
   }
 
-  getLocalProducts(): any[] {
+  getLocalProducts(): any[] {    // retorna a lista de produtos
      this.initRepository();
     return ProductService.products;
   }
 
-  initRepository() {
+  initRepository() {               // verifica se a lista de produtos esta vazia, se estiver captura os dados da API
     if (ProductService.products.length == 0) {
       this.getProducts().subscribe(
         (res: any) => {

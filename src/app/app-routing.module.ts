@@ -7,7 +7,7 @@ const routes: Routes = [
   {
     path: '',
     component: MainPageComponent,
-    children: [
+    children: [  // armazena rotas da aplicação
       {
         path: 'products',
         loadChildren: () => import('./products/products.module').then(m => m.ProductsPageModule)

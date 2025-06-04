@@ -17,7 +17,7 @@ export class ProductsPage implements OnInit {
 
   
 
-  ngOnInit() {
+  ngOnInit() {     // gatilho para obter dados de produto da API ao inicializar componente
     this.loadProducts();
   }
 

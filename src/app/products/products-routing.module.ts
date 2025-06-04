@@ -7,8 +7,8 @@ import { AddProductPage } from './add-product/add-product.page';
 
 const routes: Routes = [
   {
-    path: '',
-    component: HomePage
+    path: '',    //nome da rota 
+    component: HomePage  //componente que sera chamado ao acionar a rota
   },
   {
     path: 'add-product',

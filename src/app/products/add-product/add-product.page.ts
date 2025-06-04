@@ -1,19 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductService } from '../../product.service';  //importando service que é uma classe que tem lógica, que guarda e organiza as informações  para o app
-import { CurrencyMaskConfig } from 'ionicng2-currency-mask/src/currency-mask.config';
+import { ProductService } from '../../product.service'; 
 
-
-
-export const CustomCurrencyMaskConfig: CurrencyMaskConfig = {
-    align: "right",
-    allowNegative: true,
-    decimal: ",",
-    precision: 2,
-    prefix: "R$ ",
-    suffix: "",
-    thousands: "."
-};
 
 @Component({
   selector: 'app-add-product',
@@ -33,7 +21,7 @@ export class AddProductPage {
 
   addProduct() {
     this.productService.addProduct(this.product).subscribe(() => {
-      this.router.navigate(['/products']); 
+      this.router.navigate(['/products/list']); 
     });
   }
 }
