@@ -21,7 +21,7 @@ export class ProductService implements OnInit {
 
   addProduct(product: any): Observable<any> {
     ProductService.products.unshift(product);
-    return of(null);
+    return this.http.post(this.apiUrl, product);
   }
 
   getLocalProducts(): any[] {
@@ -31,7 +31,7 @@ export class ProductService implements OnInit {
 
   initRepository() {
     if (ProductService.products.length == 0) {
-      this.http.get(this.apiUrl).subscribe(
+      this.getProducts().subscribe(
         (res: any) => {
           ProductService.products = res
         }
