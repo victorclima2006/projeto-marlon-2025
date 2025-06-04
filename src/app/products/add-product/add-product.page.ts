@@ -25,7 +25,8 @@ export class AddProductPage {
   product = {
     title: '',
     price: null,
-    description: ''
+    description: '',
+    image: ''
   };
 
   constructor(private productService: ProductService, private router: Router) {}

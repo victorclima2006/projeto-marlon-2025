@@ -1,19 +1,20 @@
-
-
-  <ion-title>Produtos</ion-title>
-    <ion-buttons slot="end">
-      <ion-button routerLink="/add-product">Adicionar novo produto</ion-button>
-    </ion-buttons>
-  <ion-list *ngIf="products.length > 0">
-    <ion-item *ngFor="let product of products">
-      <ion-label>
-           <h2>{{ product.title | uppercase }}</h2>
-        <p>{{ product.price | currency }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-  <ion-item *ngIf="products.length === 0">
+<ion-title>Produtos</ion-title>
+<div class="ion-margin"></div>
+<ion-list *ngIf="products.length > 0">
+  <ion-item *ngFor="let product of products">
     <ion-label>
-      <h2>Sem produtos disponíveis</h2>
+      <h2>{{ product.title | uppercase }}</h2>
+      <p>{{ product.price | currency }}</p>
+      <p>Descrição: {{product.description}}</p>
+      <div *ngIf="product.image">
+        <ion-img src="{{product.image}}" style="height: 10rem;"
+          ></ion-img>
+      </div>
     </ion-label>
   </ion-item>
+</ion-list>
+<ion-item *ngIf="products.length === 0">
+  <ion-label>
+    <h2>Sem produtos disponíveis</h2>
+  </ion-label>
+</ion-item>

@@ -8,23 +8,11 @@
   <ion-button expand="full" (click)="navigateToAddProduct()" color="primary" class="add-product-button">Adicionar
     Produto</ion-button>
 <div class="ion-margin"></div>
-
-
-  <ion-title>Produtos</ion-title>
+<ion-button expand="full" (click)="navigateToList()" color="primary" class="add-product-button">Listar produtos</ion-button>
 <div class="ion-margin"></div>
-  <ion-list *ngIf="products.length > 0">
-    <ion-item *ngFor="let product of products">
-      <ion-label>
-        <h2>{{ product.title | uppercase }}</h2>
-        <p>{{ product.price | currency }}</p>
-      </ion-label>
-    </ion-item>
-  </ion-list>
-  <ion-item *ngIf="products.length === 0">
-    <ion-label>
-      <h2>Sem produtos disponíveis</h2>
-    </ion-label>
-  </ion-item>
+
+
+  
 </div>
 
 <style>

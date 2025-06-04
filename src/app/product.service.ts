@@ -1,26 +1,41 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class ProductService implements OnInit {
   private apiUrl = 'https://fakestoreapi.com/products';
-  private products: any[] = []; 
+  static products: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
+
+  ngOnInit(): void {
+    // this.initRepository()
+  }
 
   getProducts(): Observable<any> {
     return this.http.get(this.apiUrl);
   }
 
   addProduct(product: any): Observable<any> {
-    this.products.push(product);
-    return of(null); 
+    ProductService.products.unshift(product);
+    return of(null);
   }
 
   getLocalProducts(): any[] {
-    return this.products; 
+     this.initRepository();
+    return ProductService.products;
+  }
+
+  initRepository() {
+    if (ProductService.products.length == 0) {
+      this.http.get(this.apiUrl).subscribe(
+        (res: any) => {
+          ProductService.products = res
+        }
+      )
+    }
   }
 }
