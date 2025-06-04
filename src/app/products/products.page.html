@@ -1,17 +1,19 @@
 <ion-title>Produtos</ion-title>
 <div class="ion-margin"></div>
 <ion-list *ngIf="products.length > 0">
-  <ion-item *ngFor="let product of products">
+  <ion-item *ngFor="let product of products | paginate: { itemsPerPage: 3, currentPage: page }">
     <ion-label>
       <h2>{{ product.title | uppercase }}</h2>
       <p>{{ product.price | currency }}</p>
       <p>Descrição: {{product.description}}</p>
       <div *ngIf="product.image">
-        <ion-img src="{{product.image}}" style="height: 10rem;"
-          ></ion-img>
+        <ion-img src="{{product.image}}" style="height: 10rem;"></ion-img>
       </div>
     </ion-label>
   </ion-item>
+  <div class="has-text-centered">
+    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+  </div>
 </ion-list>
 <ion-item *ngIf="products.length === 0">
   <ion-label>

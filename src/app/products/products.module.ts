@@ -13,6 +13,7 @@ import { MainPageComponent } from '../main-page/main-page.component';
 import { AddProductPage, CustomCurrencyMaskConfig } from './add-product/add-product.page';
 import { HomePage } from './home/home.page';
 import { CURRENCY_MASK_CONFIG } from 'ionicng2-currency-mask/src/currency-mask.config';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   imports: [
@@ -20,7 +21,8 @@ import { CURRENCY_MASK_CONFIG } from 'ionicng2-currency-mask/src/currency-mask.c
     FormsModule,
     IonicModule,
     ProductsPageRoutingModule,
-    RouterModule
+    RouterModule,
+    NgxPaginationModule
   ],
   declarations: [
     ProductsPage,

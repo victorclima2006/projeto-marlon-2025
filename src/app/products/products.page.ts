@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 
 @Component({
@@ -10,7 +10,12 @@ import { ProductService } from '../product.service';
 export class ProductsPage implements OnInit {
   products: any[] = [];
 
+   @Input('data') meals: string[] = [];
+    page: number = 1;
+
   constructor(private productService: ProductService) {}
+
+  
 
   ngOnInit() {
     this.loadProducts();
